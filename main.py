@@ -49,7 +49,7 @@ def main():
         subprocess.call('python portscan.py '+str(IP), shell=True)
     
     print "\033[1;34m[*] Portscan Finished. Evaluating logfiles... please wait"
-    report = "/home/simon/PORTreport-87.156.144.*"
+    report = "PORTreport-87.156.144.*"
     file = open(report, 'w')
     print "\033[1;34m[*] Writing logfile to: "+str(file) 
     for IP in onlineIPs:
