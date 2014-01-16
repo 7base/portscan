@@ -19,9 +19,11 @@ def IPscanner(target, IPmin, IPmax, proc, lock):
         IPcon = str(target)+"."+str(IP)
         try:
             socket.gethostbyaddr(IPcon)
+            '''
             lock.acquire()
             print "\033[1;32m[+] "+str(IPcon)+" \tis available"
             lock.release()
+            '''
             onlineIPs.append(IPcon)
         except:
             offlineIPs.append(IPcon)

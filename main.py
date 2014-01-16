@@ -10,7 +10,7 @@ import subprocess
 import datetime
 
 def help():
-    print "\033[1;33m\nPython Portscanner V0.2\n\n Syntax: main.py x.x.x\n\n Current version scans following ports: 20, 21, 22, 23, 25, 53, 80, 110, 433, 587, 3389, 5222, 5223, 25565, 51413"
+    print "\033[1;33m\nPython Portscanner V0.3-beta\n\nSyntax: main.py x.x.x\n\nThis version scans following ports: 20, 21, 22, 23, 25, 53, 80, 110, 433, 587, 3389, 5222, 5223, 25565, 51413"
     sys.exit("\n[*] Script finished. Exiting\n\x1b[0m\r")
 
 def main():
@@ -25,7 +25,7 @@ def main():
     
     subprocess.call('python ipscanner.py '+str(targetIP), shell=True) #Calls the ipscanner.py script and waits for it to finish
     
-    print "\033[1;34m[*] IP-Test Finished. Evaluating logfiles... please wait"
+    print "\033[1;34m[*] IP-Scan Finished. Evaluating logfiles... please wait"
     for n in range(64):
         readerfile = "/tmp/ip"+str(n)
         fileHandle = open (readerfile)
@@ -43,8 +43,7 @@ def main():
             ip = string.replace(ip, "'", "")       
             if len(ip) > 5:
                 onlineIPs.append(ip)
-                print "\r"+str(ip)+"\r"
-    print "\n\n\033[1;33mOffline IPs: \033[1;31m\nOffline Ips are hidden"     
+                print "\r"+str(ip)+"\r"   
     for ip in offlineto:
         ip = string.replace(ip, "\n", "")
         ip = string.replace(ip, "['", "")

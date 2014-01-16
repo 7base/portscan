@@ -1,10 +1,10 @@
-Python Portscanner V0.2
+Python Portscanner V0.3-beta
 ===
 
 About
 ---
 
-My first Python Porject.<br>
+My first Python Project.<br>
 Current version is more than basic...
 
 How to use
@@ -29,5 +29,6 @@ Drop an eMail: admin@7base.net
 Changelog
 ---
 
+- V0.3-beta Allmost the same as V0.2 but with some fixes. First 'real' release
 - V0.2 User input now posible. Improved report output
 - V0.1 Initial upload
