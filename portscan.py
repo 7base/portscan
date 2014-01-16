@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Copyright 2014 Simon Barth
+
 import os
 import sys
 import socket
@@ -45,7 +47,7 @@ if __name__ == "__main__":
         main()       
     except KeyboardInterrupt:
         print "\033[1;31m\n[-] You pressed Ctrl+C\n\x1b[0m\r"
-        for process in proclist: # then kill them all off
+        for process in proclist:
             process.terminate()
         sys.exit()
     print "\n\x1b[0m\r"

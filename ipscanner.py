@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+# Copyright 2014 Simon Barth
+
 import os
 import sys
 import socket
@@ -8,13 +10,13 @@ import multiprocessing
 import subprocess
 from multiprocessing import Lock
 
-def IPscanner(IPmin, IPmax, proc, lock):
+def IPscanner(target, IPmin, IPmax, proc, lock):
     
     onlineIPs = []
     offlineIPs = []
     for IP in range(IPmin, IPmax): 
         socket.setdefaulttimeout(1)
-        IPcon = "87.156.144."+str(IP)
+        IPcon = str(target)+"."+str(IP)
         try:
             socket.gethostbyaddr(IPcon)
             lock.acquire()
@@ -34,6 +36,7 @@ def IPscanner(IPmin, IPmax, proc, lock):
     
 def main():
     
+    target = sys.argv[1]
     l = Lock()  
     proclist = []
     minimals = {}
@@ -43,18 +46,18 @@ def main():
     IPpro = IPtotal/64
     minimal = 0
     maximal = IPpro
-    print "\033[1;34m[*] Calculating process distribution\n"
+    print "\033[1;34m\n[*] Calculating process distribution\n"
     for n in range(64):
         minimals[n] = minimal
         maximals[n] = maximal
         minimal = minimal+IPpro
         maximal = maximal+IPpro
     
-    print "[*] Starting scan... please wait"
+    print "[*] Starting scan on "+str(target)+".x ... please wait"
     for n in range(64):
         IPmin = minimals[n]        
         IPmax = maximals[n]       
-        process = multiprocessing.Process(target=IPscanner, args=[IPmin, IPmax, n, l])
+        process = multiprocessing.Process(target=IPscanner, args=[target, IPmin, IPmax, n, l])
         process.start()
         proclist.append(process)
 
