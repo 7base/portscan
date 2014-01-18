@@ -33,6 +33,7 @@ def main():
     proclist = []
     minimals = {}
     maximals = {}
+    # Edit the following list to change to ports which will be scanned
     PORTs = [20, 21, 22, 23, 25, 53, 80, 110, 433, 587, 3389, 5222, 5223, 25565, 51413]
        
     print "\033[1;34m[*] Starting portscan on "+str(IP)+"... please wait"

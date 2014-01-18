@@ -19,7 +19,8 @@ def IPscanner(target, IPmin, IPmax, proc, lock):
         IPcon = str(target)+"."+str(IP)
         try:
             socket.gethostbyaddr(IPcon)
-            '''
+            #Uncomment the following block to enable direct output when a available IP is found
+            ''' 
             lock.acquire()
             print "\033[1;32m[+] "+str(IPcon)+" \tis available"
             lock.release()
@@ -68,7 +69,7 @@ if __name__ == "__main__":
         main()       
     except KeyboardInterrupt:
         print "\033[1;31m\n[-] You pressed Ctrl+C\n\x1b[0m\r"
-        for process in proclist: # then kill them all off
+        for process in proclist:
             process.terminate()
         sys.exit()
     print "\n\x1b[0m\r"

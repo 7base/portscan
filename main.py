@@ -56,11 +56,11 @@ def main():
     print offlineIPs
     '''
     for IP in onlineIPs:
-        subprocess.call('python portscan.py '+str(IP), shell=True)
+        subprocess.call('python portscan.py '+str(IP), shell=True) #Calls the portscan.py script and waits for it to finish
     
     print "\033[1;34m[*] Portscan Finished. Evaluating logfiles... please wait"
     now = datetime.datetime.now()
-    report = "PORTreport-"+str(now)+".txt" #Saves report in a file with timestamp in the name
+    report = "PORTreport-"+str(now)+".txt" #Saves report in a file with UNIX-timestamp in the name
     file = open(report, 'w')
     print "\033[1;34m[*] Writing logfile to: "+str(report) 
     for IP in onlineIPs:
@@ -84,7 +84,7 @@ def main():
         
     file.close()
         
-    ### ENDLINE MODULE ###
+    ### ENDLINE MODULE (Deletes tmp-files)###
     print "\033[1;34m[*] Cleaning tmp-files..."
     for n in range(64):
         filename = "/tmp/ip"+str(n)
